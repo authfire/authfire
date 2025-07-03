@@ -1,13 +1,18 @@
 import { appName } from "@/lib/const"
-import { Flame } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function Logo() {
   return (
-    <a href="#" className="flex items-center gap-2 font-medium">
-      <div className="flex size-6 items-center justify-center rounded-md bg-primary-foreground text-primary">
-        <Flame className="size-4" />
-      </div>
+    <Link href="/" className="flex items-center gap-2 font-bold text-lg">
+      <Image
+        src="/images/authfire-logomark-64px.png"
+        alt="AuthFire Logomark"
+        width={32}
+        height={32}
+        className="h-8 w-8"
+      />
       {appName}
-    </a>
+    </Link>
   )
 }
