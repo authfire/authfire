@@ -4,7 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/toaster";
 import Logo from "@/components/logo";
-import { appName } from "@/lib/const";
+import { appName, privacyPolicyUrl, termsOfServiceUrl } from "@/lib/const";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,17 +47,37 @@ export default function RootLayout({
                 </div>
               </div>
               <div className="flex flex-col gap-4 p-6 md:p-10">
-                <div className="mx-auto lg:hidden">
+                <div className="flex-none mx-auto lg:hidden">
                   <Logo />
                 </div>
-                <div className="flex flex-1 items-center justify-center">
+                <div className="flex flex-auto items-center justify-center">
                   <div className="w-full max-w-xs">
                     {children}
-                    <Toaster />
+                  </div>
                 </div>
+                <footer className="flex-none flex flex-row justify-center text-xs text-muted-foreground">
+                  <div>
+                    &copy; {new Date().getFullYear()} {appName}
+                  </div>
+                  <div className="grow"></div>
+                  <div className="flex gap-6">
+                    <Link
+                      href={privacyPolicyUrl}
+                      className="text-muted-foreground hover:underline"
+                    >
+                      Privacy
+                    </Link>
+                    <Link
+                      href={termsOfServiceUrl}
+                      className="text-muted-foreground hover:underline"
+                    >
+                      Terms
+                    </Link>
+                  </div>
+                </footer>
               </div>
             </div>
-          </div>
+            <Toaster />
         </ThemeProvider>
       </body>
     </html>
