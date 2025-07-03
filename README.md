@@ -1,8 +1,14 @@
 <p align="center">
   <picture>
     <source srcset="./public/images/logo-dark.png?raw=true" media="(prefers-color-scheme: dark)">
-    <img width="320" height="64" src="./public/images/logo.png?raw=true">
+    <img width="160" height="32" src="./public/images/logo.png?raw=true">
   </picture>
+</p>
+
+<p align="center">
+  <a href="https://github.com/authfire/authfire/blob/main/LICENSE">
+    <img alt="GitHub License" src="https://img.shields.io/github/license/authfire/authfire">
+  </a>
 </p>
 
 Firebase authentication for [Next.js](https://nextjs.org) using Shadcn UI.
