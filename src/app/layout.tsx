@@ -41,13 +41,13 @@ export default function RootLayout({
             <div className="grid min-h-svh lg:grid-cols-2">
               <div className="bg-primary text-primary-foreground hidden lg:block flex flex-col gap-4 p-6 md:p-10">
                 <div className="flex justify-center gap-2 md:justify-start">
-                  <Logo />
+                  
                 </div>
                 <div className="flex flex-1 items-center justify-center py-8">
                 </div>
               </div>
               <div className="flex flex-col gap-4 p-6 md:p-10">
-                <div className="flex-none mx-auto lg:hidden">
+                <div className="flex-none mx-auto">
                   <Logo />
                 </div>
                 <div className="flex flex-auto items-center justify-center">
