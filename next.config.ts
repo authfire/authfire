@@ -1,3 +1,4 @@
+import { primaryColor, primaryForegroundColor } from "@/lib/const";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -6,6 +7,12 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
   images: {
     unoptimized: true,
+  },
+  sassOptions: {
+    additionalData: `
+      $primary: ${primaryColor};
+      $primary-foreground: ${primaryForegroundColor};
+    `,
   },
 };
 
