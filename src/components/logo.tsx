@@ -1,3 +1,4 @@
+import { appName } from "@/lib/const"
 import { Flame } from "lucide-react"
 
 export default function Logo() {
@@ -6,7 +7,7 @@ export default function Logo() {
       <div className="flex size-6 items-center justify-center rounded-md bg-primary-foreground text-primary">
         <Flame className="size-4" />
       </div>
-      AuthFire
+      {appName}
     </a>
   )
 }
