@@ -1,6 +1,11 @@
-# AuthFire
+<p align="center">
+  <picture>
+    <source srcset="./public/images/logo-dark.png?raw=true" media="(prefers-color-scheme: dark)">
+    <img width="320" height="64" src="./public/images/logo.png?raw=true">
+  </picture>
+</p>
 
-This is a Firebase Auth UI with [Next.js](https://nextjs.org).
+Firebase authentication for [Next.js](https://nextjs.org) using Shadcn UI.
 
 ## Getting Started
 
