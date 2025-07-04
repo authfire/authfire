@@ -44,8 +44,8 @@ const getAppCheckToken = async (forceRefresh: boolean = false) => {
   if (typeof window === 'undefined') {
     throw new Error("App Check is not available on the server side.");
   }
-  const token = await getToken(appCheck, forceRefresh );
-  return token.token;
+  const result = await getToken(appCheck, forceRefresh);
+  return result.token;
 }
 
 const verifyIdToken = async (user: User) => {
@@ -54,14 +54,18 @@ const verifyIdToken = async (user: User) => {
   }
 
   const idToken = await user.getIdToken();
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json"
+  }
+
+  if (appCheck) {
+    headers['X-Firebase-AppCheck'] = await getAppCheckToken();
+  }
 
   // Send the token to your API route
   const response = await fetch(idTokenVerificationUrl, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      'X-Firebase-AppCheck': await getAppCheckToken()
-    },
+    headers,
     body: JSON.stringify({ idToken }),
   });
 
