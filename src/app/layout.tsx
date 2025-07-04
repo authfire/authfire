@@ -5,7 +5,7 @@ import "./custom.scss";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/toaster";
 import Logo from "@/components/logo";
-import { appName, privacyPolicyUrl, termsOfServiceUrl } from "@/lib/const";
+import { appName, legalBusinessName, privacyPolicyUrl, termsOfServiceUrl } from "@/lib/const";
 import Link from "next/link";
 
 const geistSans = Geist({
@@ -58,7 +58,7 @@ export default function RootLayout({
                 </div>
                 <footer className="flex-none flex flex-row justify-center text-xs text-muted-foreground">
                   <div>
-                    &copy; {new Date().getFullYear()} {appName}
+                    &copy; {new Date().getFullYear()} {legalBusinessName}
                   </div>
                   <div className="grow"></div>
                   <div className="flex gap-6">
