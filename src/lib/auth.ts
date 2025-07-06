@@ -54,6 +54,7 @@ const verifyIdToken = async (user: User) => {
     method: "POST",
     headers,
     body: JSON.stringify({ idToken }),
+    credentials: 'include',
   });
 
   if (response.ok) {
@@ -107,6 +108,7 @@ const signOut = async () => {
         "Content-Type": "application/json",
         'X-Firebase-AppCheck': await getAppCheckToken()
       },
+      credentials: 'include',
     });
 
     if (response.ok) {
