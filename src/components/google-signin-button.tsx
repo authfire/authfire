@@ -1,10 +1,11 @@
 'use client'
 
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 import Image from 'next/image'
 import { useState } from 'react';
-import { auth, signIn } from "@/lib/firebase";
 import { toast } from "sonner";
+import { signIn } from "@/lib/auth";
+import { baseUrl } from "@/lib/const";
 
 export default function GoogleSignInButton() {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -14,9 +15,10 @@ export default function GoogleSignInButton() {
     setIsDisabled(true);
 
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        signIn(result.user)
+    signIn({ provider })
+      .then(() => {
+        toast.success('Login successful!');
+        window.location.href = baseUrl;
       })
       .finally(() => {
         setIsDisabled(false);

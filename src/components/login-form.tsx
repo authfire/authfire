@@ -6,11 +6,12 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react";
 import { baseUrl } from "@/lib/const"
-import { auth, signIn } from "@/lib/firebase"
-import { sendSignInLinkToEmail, signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "@/lib/firebase"
+import { sendSignInLinkToEmail } from "firebase/auth"
 import { LoadingIcon } from "./loading-icon"
 import { toast } from "sonner"
 import GoogleSignInButton from "./google-signin-button"
+import { signIn } from "@/lib/auth"
 
 export function LoginForm({
   className,
@@ -69,9 +70,10 @@ export function LoginForm({
       const email = getInputValue("email");
       const password = getInputValue("password");
 
-      signInWithEmailAndPassword(auth, email, password)
-        .then(async (userCredential) => {
-          await signIn(userCredential.user)
+      signIn({ email, password })
+        .then(() => {
+          toast.success('Login successful!');
+          window.location.href = baseUrl;
         })
         .catch((error) => {
           if (error.code === 'auth/invalid-credential') {
@@ -81,7 +83,7 @@ export function LoginForm({
           } else {
             const errorCode = error.code;
             const errorMessage = error.message;
-            alert(errorCode + ' ' + errorMessage);
+            toast.error(errorCode + ' ' + errorMessage);
           }
         })
         .finally(() => {

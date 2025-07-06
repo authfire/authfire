@@ -1,14 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { signOut, useCurrentUser } from "@/lib/auth";
 import { appName } from "@/lib/const";
-import { currentUser, onCurrentUserChange, signOut } from "@/lib/firebase";
-import { useState } from "react";
 import GitHubButton from "react-github-btn";
 
 export default function Home() {
-  const [user, setUser] = useState(currentUser);
-  onCurrentUserChange(setUser);
+  const { user } = useCurrentUser();
 
   return (
     <div className="flex flex-col items-center justify-items-center h-full gap-64">
