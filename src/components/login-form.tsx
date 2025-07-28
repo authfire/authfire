@@ -12,6 +12,7 @@ import { LoadingIcon } from "./loading-icon"
 import { toast } from "sonner"
 import GoogleSignInButton from "./google-signin-button"
 import { signIn } from "@/lib/auth"
+import OpenIDConnectButton from "./openid-connect-button"
 
 export function LoginForm({
   className,
@@ -148,6 +149,7 @@ export function LoginForm({
           </span>
         </div>
         <GoogleSignInButton />
+        <OpenIDConnectButton />
       </div>
       <div className="text-center text-sm">
         Don&apos;t have an account?{" "}

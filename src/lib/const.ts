@@ -20,3 +20,9 @@ export const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 }
+
+export const openIdConfig = {
+  providerId: process.env.NEXT_PUBLIC_OPENID_CONNECT_PROVIDER_ID,
+  name: process.env.NEXT_PUBLIC_OPENID_CONNECT_NAME,
+  logoUrl: process.env.NEXT_PUBLIC_OPENID_CONNECT_LOGO_URL,
+}

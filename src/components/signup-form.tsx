@@ -10,6 +10,7 @@ import { createUserWithEmailAndPassword, sendEmailVerification, User } from "fir
 import { auth } from "@/lib/firebase"
 import { toast } from "sonner"
 import GoogleSignInButton from "./google-signin-button"
+import OpenIDConnectButton from "./openid-connect-button"
 
 export function SignupForm({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -108,6 +109,7 @@ export function SignupForm({ className, ...props }: React.HTMLAttributes<HTMLDiv
         </div>
       </div>
       <GoogleSignInButton />
+      <OpenIDConnectButton />
     </div>
   )
 }
