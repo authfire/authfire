@@ -14,8 +14,7 @@ export default function GoogleSignInButton() {
     event.preventDefault();
     setIsDisabled(true);
 
-    const provider = new GoogleAuthProvider();
-    signIn({ provider })
+    signIn({ provider: 'google' })
       .then(() => {
         toast.success('Login successful!');
         window.location.href = baseUrl;

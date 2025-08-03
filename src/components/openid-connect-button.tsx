@@ -19,8 +19,7 @@ export default function OpenIDConnectButton() {
     event.preventDefault();
     setIsDisabled(true);
 
-    const provider = new OAuthProvider(providerId || '');
-    signIn({ provider })
+    signIn({ provider: providerId })
       .then(() => {
         toast.success('Login successful!');
         window.location.href = baseUrl;
