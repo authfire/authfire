@@ -12,4 +12,9 @@ export const {
   verifyIdToken,
   signIn,
   signOut
-} = initialize(firebaseConfig, idTokenVerificationUrl || "", serverSignOutUrl || "", recaptchaSiteKey || "");
+} = initialize(
+  firebaseConfig,
+  idTokenVerificationUrl,
+  serverSignOutUrl,
+  recaptchaSiteKey
+);
