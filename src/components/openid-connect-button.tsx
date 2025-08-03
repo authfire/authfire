@@ -1,7 +1,6 @@
 'use client'
 
-import { OAuthProvider } from "firebase/auth";
-import Image from 'next/image'
+import Image from 'next/image';
 import { useState } from 'react';
 import { toast } from "sonner";
 import { baseUrl, openIdConfig } from "@/lib/const";
