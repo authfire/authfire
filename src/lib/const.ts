@@ -6,6 +6,7 @@ export const privacyPolicyUrl = process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL || `$
 export const termsOfServiceUrl = process.env.NEXT_PUBLIC_TERMS_OF_SERVICE_URL || `${baseUrl}/terms-of-service`;
 export const idTokenVerificationUrl = process.env.NEXT_PUBLIC_ID_TOKEN_VERIFICATION_URL;
 export const serverSignOutUrl = process.env.NEXT_PUBLIC_SERVER_SIGN_OUT_URL;
+export const serverTokenUrl = process.env.NEXT_PUBLIC_SERVER_TOKEN_URL;
 export const primaryColor = process.env.NEXT_THEME_PRIMARY_COLOR || "#171717";
 export const primaryForegroundColor = process.env.NEXT_THEME_PRIMARY_FOREGROUND_COLOR || "#fafafa";
 export const legalBusinessName = process.env.NEXT_PUBLIC_LEGAL_BUSINESS_NAME || appName;

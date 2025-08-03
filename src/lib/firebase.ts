@@ -1,4 +1,4 @@
-import { firebaseConfig, idTokenVerificationUrl, recaptchaSiteKey, serverSignOutUrl } from "./const";
+import { firebaseConfig, idTokenVerificationUrl, recaptchaSiteKey, serverSignOutUrl, serverTokenUrl } from "./const";
 import { initialize } from "@authfire/jsfire";
 
 export const {
@@ -16,5 +16,6 @@ export const {
   firebaseConfig,
   idTokenVerificationUrl,
   serverSignOutUrl,
+  serverTokenUrl,
   recaptchaSiteKey
 );
