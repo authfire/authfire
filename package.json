@@ -1,7 +1,6 @@
 {
-  "name": "authfire",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@authfire/authfire",
+  "version": "0.1.1",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -9,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@authfire/jsfire": "^1.0.1",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
