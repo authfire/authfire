@@ -4,8 +4,8 @@ import { GoogleAuthProvider } from "firebase/auth";
 import Image from 'next/image'
 import { useState } from 'react';
 import { toast } from "sonner";
-import { signIn } from "@/lib/auth";
 import { baseUrl } from "@/lib/const";
+import { signIn } from "@/lib/firebase";
 
 export default function GoogleSignInButton() {
   const [isDisabled, setIsDisabled] = useState(false);

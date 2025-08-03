@@ -6,12 +6,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react";
 import { baseUrl } from "@/lib/const"
-import { auth } from "@/lib/firebase"
+import { auth, signIn } from "@/lib/firebase"
 import { sendSignInLinkToEmail } from "firebase/auth"
 import { LoadingIcon } from "./loading-icon"
 import { toast } from "sonner"
 import GoogleSignInButton from "./google-signin-button"
-import { signIn } from "@/lib/auth"
 import OpenIDConnectButton from "./openid-connect-button"
 
 export function LoginForm({
