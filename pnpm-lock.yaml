@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@authfire/jsfire':
-        specifier: ^1.0.5
-        version: 1.0.5
+        specifier: ^1.0.7
+        version: 1.0.7
       '@radix-ui/react-label':
         specifier: ^2.1.7
         version: 2.1.7(@types/react-dom@19.1.6(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -95,8 +95,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@authfire/jsfire@1.0.5':
-    resolution: {integrity: sha512-pPdr1wWarkhAyIrVLYzFvTk6nInRlyqIZm2MJILgLyNTK26FjN6cUb9S6I5n936cIlKFLkJgxbVcEZKUhgB58A==}
+  '@authfire/jsfire@1.0.7':
+    resolution: {integrity: sha512-I3iVBqQOesn+FX+6bWMQ7DTkLAYZ6ZWChmVcu0vjIyPBHVQ43cykWg6DA+ljOVK1RQQn+ysb/qWfkcUnZPnqyg==}
 
   '@emnapi/core@1.4.3':
     resolution: {integrity: sha512-4m62DuCE07lw01soJwPiBGC0nAww0Q+RY70VZ+n49yDIO13yyinhbWCeNnaob0lakDtWQzSdtNWzJeOJt2ma+g==}
@@ -2373,7 +2373,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@authfire/jsfire@1.0.5': {}
+  '@authfire/jsfire@1.0.7': {}
 
   '@emnapi/core@1.4.3':
     dependencies:
