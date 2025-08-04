@@ -2,9 +2,9 @@
 
 import LinkToAuthfire from "@/components/link-to-authfire";
 import { Button } from "@/components/ui/button";
-import { useCurrentUser } from "@/lib/auth";
 import { appName, baseUrl } from "@/lib/const";
 import { signOut } from "@/lib/firebase";
+import { useCurrentUser } from "@authfire/reactfire";
 
 export default function Home() {
   const { user } = useCurrentUser();

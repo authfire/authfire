@@ -1,3 +1,4 @@
+import { setAuth, setVerifyIdToken } from "@authfire/reactfire";
 import { firebaseConfig, idTokenVerificationUrl, recaptchaSiteKey, serverSignOutUrl, serverTokenUrl } from "./const";
 import { initialize } from "@authfire/jsfire";
 
@@ -19,3 +20,6 @@ export const {
   serverTokenUrl,
   recaptchaSiteKey
 );
+
+setAuth(auth)
+setVerifyIdToken(verifyIdToken)
