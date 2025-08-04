@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@authfire/jsfire':
-        specifier: ^1.0.9
-        version: 1.0.9
+        specifier: ^1.1.0
+        version: 1.1.0
       '@authfire/reactfire':
         specifier: ^1.0.0
         version: 1.0.0
@@ -98,8 +98,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@authfire/jsfire@1.0.9':
-    resolution: {integrity: sha512-9/eUaCK5+g/m1qmrWKIsgH9HQSzl5WYt4uI17hmK2uQkU6r7ENSnJNY91decy0W9ULclaFduRn28A1JaMp2R7A==}
+  '@authfire/jsfire@1.1.0':
+    resolution: {integrity: sha512-vSsXr8QA2u1nEuNTo5RVtzTnMWHw7xI49mroyrUlKE3OHp+/rqWTyuSQMm8DE+yDrlVNIIi9jf5vjYcsRobRJw==}
 
   '@authfire/reactfire@1.0.0':
     resolution: {integrity: sha512-A+Md0jveem+ETRe4Fb2P47PCimxu2bqnfLPZurVFtrKhCKzGdjGQU9VtQEwTmVSnpEXBCIo5vppSUOTbYOpTgA==}
@@ -2379,7 +2379,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@authfire/jsfire@1.0.9': {}
+  '@authfire/jsfire@1.1.0': {}
 
   '@authfire/reactfire@1.0.0': {}
 
