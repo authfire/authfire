@@ -9,6 +9,9 @@
   <a href="https://github.com/authfire/authfire/blob/main/LICENSE">
     <img alt="GitHub License" src="https://img.shields.io/github/license/authfire/authfire">
   </a>
+  <a href="https://github.com/authfire/authfire/actions/workflows/github-code-scanning/codeql">
+    <img alt="CodeQL" src="https://github.com/authfire/authfire/actions/workflows/github-code-scanning/codeql/badge.svg">
+  </a>
 </p>
 
 Firebase authentication for [Next.js](https://nextjs.org) using Shadcn UI.
