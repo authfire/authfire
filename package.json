@@ -20,7 +20,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.0.0",
     "react-github-btn": "^1.4.0",
-    "sonner": "^2.0.5",
+    "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
