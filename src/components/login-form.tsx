@@ -5,13 +5,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react";
-import { baseUrl } from "@/lib/const"
-import { auth, signIn } from "@/lib/firebase"
+import { baseUrl, emailLinkLoginUrl } from "@/lib/const"
+import { auth } from "@/lib/firebase"
 import { sendSignInLinkToEmail } from "firebase/auth"
 import { LoadingIcon } from "./loading-icon"
 import { toast } from "sonner"
 import GoogleSignInButton from "./google-signin-button"
 import OpenIDConnectButton from "./openid-connect-button"
+import { signIn } from "@authfire/reactfire"
 
 export function LoginForm({
   className,
@@ -35,7 +36,7 @@ export function LoginForm({
       const email = getInputValue("email");
 
       const actionCodeSettings = {
-        url: baseUrl,
+        url: emailLinkLoginUrl,
         handleCodeInApp: true,
       };
 
@@ -70,7 +71,7 @@ export function LoginForm({
       const email = getInputValue("email");
       const password = getInputValue("password");
 
-      signIn({ email, password })
+      signIn({ auth, email, password })
         .then(() => {
           toast.success('Login successful!');
           window.location.href = baseUrl;

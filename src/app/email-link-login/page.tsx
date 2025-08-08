@@ -2,7 +2,7 @@
 
 import LinkToAuthfire from "@/components/link-to-authfire";
 import { Button } from "@/components/ui/button";
-import { appName, baseUrl } from "@/lib/const";
+import { appName } from "@/lib/const";
 import { auth } from "@/lib/firebase";
 import { signOut, useCurrentUser } from "@authfire/reactfire";
 import { logEvent } from "firebase/analytics";
@@ -11,7 +11,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const handleSignOut = async () => {
-  await signOut(auth)
+  await signOut(auth);
 }
 
 export default function Home() {
