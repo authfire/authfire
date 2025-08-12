@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { baseUrl } from "@/lib/const";
 import { signIn } from '@authfire/reactfire';
 import { auth } from '@/lib/firebase';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 export default function GoogleSignInButton() {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -16,7 +16,7 @@ export default function GoogleSignInButton() {
     setIsDisabled(true);
 
     const provider = new GoogleAuthProvider();
-    signIn({ auth, provider })
+    signIn({ callback: () => signInWithPopup(auth, provider) })
       .then(() => {
         toast.success('Login successful!');
         window.location.href = baseUrl;

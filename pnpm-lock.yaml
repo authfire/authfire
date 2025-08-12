@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@authfire/reactfire':
-        specifier: ^1.2.1
-        version: 1.2.1(firebase@12.1.0)
+        specifier: ^1.2.2
+        version: 1.2.2(firebase@12.1.0)
       '@radix-ui/react-label':
         specifier: ^2.1.7
         version: 2.1.7(@types/react-dom@19.1.7(@types/react@19.1.10))(@types/react@19.1.10)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -95,13 +95,13 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@authfire/jsfire@1.2.1':
-    resolution: {integrity: sha512-dovZDlqr/JBFgvHQPbwaFQMn1+3/zSoKS/SnOJev9ITEYQwVSYwrIMlcUPeffWtpLqiob6Oq3IBfiYeoVhuQZg==}
+  '@authfire/jsfire@1.2.2':
+    resolution: {integrity: sha512-YYtA4YDtbsw7ZsfV5xjkCwFcMcLj+L/TKvE8KYRaD+pbN5kX2BiCBqAIDVEKWwMy0RgBtPjxkYz18dXvmrrLQQ==}
     peerDependencies:
       firebase: ^12.0.0
 
-  '@authfire/reactfire@1.2.1':
-    resolution: {integrity: sha512-V8qhLPmSUtrv2F2pU+EB++5hi4EHzTRk3EDLrC/KC5+dd5VloekQJz1+Z5BmACkp2Z9Ng4ZxL1dO+Aa2zsitQQ==}
+  '@authfire/reactfire@1.2.2':
+    resolution: {integrity: sha512-uQuvIdh8Bp6Ss4K6Zk++jCrDGD6bg/7Cgp8AGAgtmVqqvvP8l0WGGqkfgCf077jL1K7dVyBRZJYK05xrOJ4Yeg==}
     peerDependencies:
       firebase: ^12.0.0
 
@@ -2393,13 +2393,13 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.12
       '@jridgewell/trace-mapping': 0.3.29
 
-  '@authfire/jsfire@1.2.1(firebase@12.1.0)':
+  '@authfire/jsfire@1.2.2(firebase@12.1.0)':
     dependencies:
       firebase: 12.1.0
 
-  '@authfire/reactfire@1.2.1(firebase@12.1.0)':
+  '@authfire/reactfire@1.2.2(firebase@12.1.0)':
     dependencies:
-      '@authfire/jsfire': 1.2.1(firebase@12.1.0)
+      '@authfire/jsfire': 1.2.2(firebase@12.1.0)
       firebase: 12.1.0
 
   '@emnapi/core@1.4.5':

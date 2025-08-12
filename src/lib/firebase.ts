@@ -2,7 +2,7 @@ import { Analytics, getAnalytics, logEvent as _logEvent } from "firebase/analyti
 import { baseUrl, firebaseConfig, idTokenVerificationUrl, recaptchaSiteKey, serverSignOutUrl, serverTokenUrl } from "./const";
 import { FirebaseApp, getApp, initializeApp } from "firebase/app";
 import { AppCheck, getToken, initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
-import { getAuth } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { initializeJsFire } from "@authfire/reactfire";
 

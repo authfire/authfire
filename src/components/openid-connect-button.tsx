@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { toast } from "sonner";
 import { baseUrl, openIdConfig } from "@/lib/const";
 import { signIn } from '@authfire/reactfire';
-import { OAuthProvider } from 'firebase/auth';
+import { OAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 
 export default function OpenIDConnectButton() {
@@ -21,7 +21,7 @@ export default function OpenIDConnectButton() {
     setIsDisabled(true);
 
     const provider = new OAuthProvider(providerId || '');
-    signIn({ auth, provider })
+    signIn({ callback: () => signInWithPopup(auth, provider) })
       .then(() => {
         toast.success('Login successful!');
         window.location.href = baseUrl;

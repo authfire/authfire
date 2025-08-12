@@ -8,7 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@authfire/reactfire": "^1.2.1",
+    "@authfire/reactfire": "^1.2.2",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
