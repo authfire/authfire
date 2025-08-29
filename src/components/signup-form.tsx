@@ -7,16 +7,18 @@ import { Label } from "./ui/label"
 import { useState } from "react"
 import { LoadingIcon } from "./loading-icon"
 import { createUserWithEmailAndPassword, sendEmailVerification, User } from "firebase/auth"
-import { auth } from "@/lib/firebase"
 import { toast } from "sonner"
 import GoogleSignInButton from "./google-signin-button"
 import OpenIDConnectButton from "./openid-connect-button"
+import { useFirebase } from "@/lib/firebase"
 
 export function SignupForm({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  const { auth } = useFirebase();
   const [isDisabled, setIsDisabled] = useState(false);
   const [user, setUser] = useState<User | null>(null);
 
   const createAccount = async (e: React.FormEvent<HTMLFormElement>) => {
+    if (!auth) return;
     e.preventDefault()
     setIsDisabled(true)
 

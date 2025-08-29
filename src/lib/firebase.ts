@@ -1,38 +1,74 @@
-import { Analytics, getAnalytics, logEvent as _logEvent } from "firebase/analytics";
-import { baseUrl, firebaseConfig, idTokenVerificationUrl, recaptchaSiteKey, serverSignOutUrl, serverTokenUrl } from "./const";
-import { FirebaseApp, getApp, initializeApp } from "firebase/app";
-import { AppCheck, getToken, initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getApp, initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { initializeJsFire } from "@authfire/reactfire";
+import { getStorage } from "firebase/storage";
+import { getToken, initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
+import { getAnalytics, logEvent as _logEvent } from "firebase/analytics";
+import { useStore } from '@nanostores/react';
+import { $analytics, $app, $appCheck, $auth, $firestore, $storage, setAnalytics, setApp, setAppCheck, setAuth, setFirestore, setStorage } from "./store";
+import { baseUrl, firebaseConfig, idTokenVerificationUrl, recaptchaSiteKey, serverSignOutUrl, serverTokenUrl } from "./const";
+import { initialize } from "@authfire/core"
+import { useEffect } from "react";
 
-let app: FirebaseApp
+const useFirebase = () => {
+  let app = useStore($app);
+  let appCheck = useStore($appCheck);
+  let auth = useStore($auth);
+  let firestore = useStore($firestore);
+  let storage = useStore($storage);
+  let analytics = useStore($analytics);
 
-try {
-  app = getApp() || initializeApp(firebaseConfig)
-} catch {
-  app = initializeApp(firebaseConfig);
-}
+  useEffect(() => {
+    if (!app) {
+      try {
+        app = getApp() || initializeApp(firebaseConfig)
+      } catch {
+        app = initializeApp(firebaseConfig)
+      }
+      setApp(app);
+    }
 
-let appCheck: AppCheck|undefined = undefined
+    if (!appCheck && recaptchaSiteKey) {
+      appCheck = initializeAppCheck(app, {
+        provider: new ReCaptchaV3Provider(recaptchaSiteKey),
+        isTokenAutoRefreshEnabled: true
+      });
+      setAppCheck(appCheck);
+    }
 
-if (typeof window !== 'undefined' && recaptchaSiteKey) {
-  appCheck = initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider(recaptchaSiteKey),
-    isTokenAutoRefreshEnabled: true
-  });
-}
+    if (!auth) {
+      auth = getAuth(app);
+      setAuth(auth);
+    }
 
-const auth = getAuth(app);
-const firestore = getFirestore(app);
+    if (!firestore) {
+      firestore = getFirestore(app);
+      setFirestore(firestore);
+    }
 
-let analytics: Analytics|undefined = undefined
-if (typeof window !== 'undefined') {
-  // Ensure that Firebase Analytics is only initialized in the browser environment
-  analytics = getAnalytics(app);
+    if (!storage) {
+      storage = getStorage(app);
+      setStorage(storage);
+    }
+
+    if (!analytics) {
+      analytics = getAnalytics(app);
+      setAnalytics(analytics);
+    }
+  }, [app])
+
+  return {
+    app,
+    appCheck,
+    auth,
+    firestore,
+    storage,
+    analytics
+  }
 }
 
 const getAppCheckToken = async (forceRefresh: boolean = false) => {
+  const appCheck = $appCheck.get();
   if (typeof window === 'undefined') {
     throw new Error("App Check is not available on the server side.");
   } else if (!appCheck) {
@@ -44,6 +80,7 @@ const getAppCheckToken = async (forceRefresh: boolean = false) => {
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const logEvent = (eventName: string, eventParams?: Record<string, any>) => {
+  const analytics = $analytics.get();
   if (!analytics) {
     console.warn("Analytics is not available in this environment.");
     return;
@@ -51,13 +88,18 @@ const logEvent = (eventName: string, eventParams?: Record<string, any>) => {
   _logEvent(analytics, eventName, eventParams);
 }
 
-initializeJsFire({
+if (!idTokenVerificationUrl || !serverTokenUrl || !serverSignOutUrl) {
+  throw new Error("One or more required URL configs are not set.");
+}
+
+initialize({
   baseUrl,
   idTokenVerificationUrl,
   serverTokenUrl,
   serverSignOutUrl,
+  useFirebase,
   getAppCheckToken,
   logEvent
 })
 
-export { app, firestore, auth, appCheck, analytics, logEvent, getAppCheckToken };
+export { useFirebase, getAppCheckToken, logEvent };

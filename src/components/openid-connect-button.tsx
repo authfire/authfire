@@ -4,24 +4,26 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { toast } from "sonner";
 import { baseUrl, openIdConfig } from "@/lib/const";
-import { signIn } from '@authfire/reactfire';
+import { signIn } from '@authfire/core';
 import { OAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { useFirebase } from '@/lib/firebase';
 
 export default function OpenIDConnectButton() {
+  const { auth } = useFirebase();
   const [isDisabled, setIsDisabled] = useState(false);
   const { providerId, name, logoUrl } = openIdConfig;
 
-  if (!providerId || !name || !logoUrl) {
+  if (!auth || !providerId || !name || !logoUrl) {
     return null;
   }
 
   function signInWithOpenID(event: React.MouseEvent<HTMLButtonElement>) {
+    if (!auth) return;
     event.preventDefault();
     setIsDisabled(true);
 
     const provider = new OAuthProvider(providerId || '');
-    signIn({ callback: () => signInWithPopup(auth, provider) })
+    signIn(() => signInWithPopup(auth, provider))
       .then(() => {
         toast.success('Login successful!');
         window.location.href = baseUrl;

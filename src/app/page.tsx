@@ -3,15 +3,17 @@
 import LinkToAuthfire from "@/components/link-to-authfire";
 import { Button } from "@/components/ui/button";
 import { appName } from "@/lib/const";
-import { auth } from "@/lib/firebase";
-import { signOut, useCurrentUser } from "@authfire/reactfire";
-
-const handleSignOut = async () => {
-  await signOut(auth)
-}
+import { useFirebase } from "@/lib/firebase";
+import { signOut, useCurrentUser } from "@authfire/core";
 
 export default function Home() {
-  const { user } = useCurrentUser(auth);
+  const { auth } = useFirebase();
+  const { user } = useCurrentUser();
+
+  const handleSignOut = async () => {
+    if (!auth) return;
+    await signOut(auth);
+  }
 
   return (
     <div className="flex flex-col items-center justify-items-center h-full gap-64">

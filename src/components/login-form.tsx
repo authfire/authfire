@@ -6,23 +6,25 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react";
 import { baseUrl, emailLinkLoginUrl } from "@/lib/const"
-import { auth } from "@/lib/firebase"
 import { sendSignInLinkToEmail, signInWithEmailAndPassword } from "firebase/auth"
 import { LoadingIcon } from "./loading-icon"
 import { toast } from "sonner"
 import GoogleSignInButton from "./google-signin-button"
 import OpenIDConnectButton from "./openid-connect-button"
-import { signIn } from "@authfire/reactfire"
+import { signIn } from "@authfire/core"
+import { useFirebase } from "@/lib/firebase"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+  const { auth } = useFirebase();
   const [isDisabled, setIsDisabled] = useState(false);
   const [passwordRequired, setPasswordRequired] = useState(true);
   const [message, setMessage] = useState('');
 
   const sendLoginLink = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!auth) return;
     e.preventDefault()
 
     setPasswordRequired(false); // Disable password requirement for email-only login
@@ -64,6 +66,7 @@ export function LoginForm({
 
     const loginForm = document.getElementById("login") as HTMLFormElement;
     loginForm.onsubmit = (e) => {
+      if (!auth) return;
       e.preventDefault(); // Prevent default form submission
       setMessage('');
       setIsDisabled(true);
@@ -71,7 +74,7 @@ export function LoginForm({
       const email = getInputValue("email");
       const password = getInputValue("password");
 
-      signIn({ callback: () => signInWithEmailAndPassword(auth, email, password) })
+      signIn(() => signInWithEmailAndPassword(auth, email, password))
         .then(() => {
           toast.success('Login successful!');
           window.location.href = baseUrl;

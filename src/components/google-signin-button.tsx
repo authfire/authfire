@@ -4,19 +4,21 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { toast } from "sonner";
 import { baseUrl } from "@/lib/const";
-import { signIn } from '@authfire/reactfire';
-import { auth } from '@/lib/firebase';
+import { signIn } from '@authfire/core';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useFirebase } from '@/lib/firebase';
 
 export default function GoogleSignInButton() {
+  const { auth } = useFirebase();
   const [isDisabled, setIsDisabled] = useState(false);
 
   function signInWithGoogle(event: React.MouseEvent<HTMLButtonElement>) {
+    if (!auth) return;
     event.preventDefault();
     setIsDisabled(true);
 
     const provider = new GoogleAuthProvider();
-    signIn({ callback: () => signInWithPopup(auth, provider) })
+    signIn(() => signInWithPopup(auth, provider))
       .then(() => {
         toast.success('Login successful!');
         window.location.href = baseUrl;
