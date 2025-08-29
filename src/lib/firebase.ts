@@ -88,10 +88,6 @@ const logEvent = (eventName: string, eventParams?: Record<string, any>) => {
   _logEvent(analytics, eventName, eventParams);
 }
 
-if (!idTokenVerificationUrl || !serverTokenUrl || !serverSignOutUrl) {
-  throw new Error("One or more required URL configs are not set.");
-}
-
 initialize({
   baseUrl,
   idTokenVerificationUrl,
