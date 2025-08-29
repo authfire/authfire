@@ -4,16 +4,18 @@ import { LoadingIcon } from "@/components/loading-icon";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { auth } from "@/lib/firebase";
+import { useFirebase } from "@/lib/firebase";
 import { clearInput, getInputValue } from "@/lib/utils";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { FormEvent, useState } from "react";
 import { toast } from "sonner";
 
 export default function ForgotPasswordPage() {
+  const { auth } = useFirebase();
   const [isDisabled, setIsDisabled] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    if (!auth) return;
     event.preventDefault();
     setIsDisabled(true);
 

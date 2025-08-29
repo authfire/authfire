@@ -1,6 +1,6 @@
 "use client";
 
-import { auth } from "@/lib/firebase";
+import { useFirebase } from "@/lib/firebase";
 import { logEvent } from "firebase/analytics";
 import { isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
 import { redirect, useSearchParams } from "next/navigation";
@@ -8,6 +8,7 @@ import { Suspense } from "react";
 import { toast } from "sonner";
 
 export default function Page() {
+  const { auth } = useFirebase();
   const Loading =
       <div className="flex flex-col items-center justify-items-center h-full gap-64">
         <main className="flex flex-col flex-auto gap-[32px] row-start-2 items-center sm:items-start">
@@ -19,7 +20,12 @@ export default function Page() {
         </main>
       </div>
 
+  if (!auth) {
+    return Loading;
+  }
+
   function SignIn() {
+    if (!auth) return Loading;
     const searchParams = useSearchParams();
     const mode = searchParams.get("mode");
 
