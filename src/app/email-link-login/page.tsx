@@ -20,13 +20,9 @@ export default function Page() {
         </main>
       </div>
 
-  if (!auth) {
-    return Loading;
-  }
-
   function SignIn() {
-    if (!auth) return Loading;
     const searchParams = useSearchParams();
+    if (!auth) return Loading;
     const mode = searchParams.get("mode");
 
     if (mode !== "signIn") {
