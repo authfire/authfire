@@ -1,5 +1,6 @@
 "use client";
 
+import { useFirebase } from "@/lib/firebase";
 import { LoadingIcon } from "./loading-icon";
 import { Button } from "./ui/button";
 import { useCurrentUser } from "@authfire/core";
@@ -7,6 +8,7 @@ import { useCurrentUser } from "@authfire/core";
 export function LoadingView({
   ...props
 }: React.ComponentProps<"div">) {
+  useFirebase();
   const { isLoading } = useCurrentUser();
   if (!isLoading) return null;
 
