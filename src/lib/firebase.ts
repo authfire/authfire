@@ -5,12 +5,13 @@ import { getStorage } from "firebase/storage";
 import { getToken, initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 import { getAnalytics, logEvent as _logEvent } from "firebase/analytics";
 import { useStore } from '@nanostores/react';
-import { $analytics, $app, $appCheck, $auth, $firestore, $storage, setAnalytics, setApp, setAppCheck, setAuth, setFirestore, setStorage } from "./store";
+import { $analytics, $app, $appCheck, $auth, $firestore, $loading, $storage, setAnalytics, setApp, setAppCheck, setAuth, setFirestore, setLoading, setStorage } from "./store";
 import { baseUrl, firebaseConfig, idTokenVerificationUrl, recaptchaSiteKey, serverSignOutUrl, serverTokenUrl } from "./const";
 import { initialize } from "@authfire/core"
 import { useEffect } from "react";
 
 const useFirebase = () => {
+  let isLoading = useStore($loading);
   let app = useStore($app);
   let appCheck = useStore($appCheck);
   let auth = useStore($auth);
@@ -55,9 +56,13 @@ const useFirebase = () => {
       analytics = getAnalytics(app);
       setAnalytics(analytics);
     }
+
+    isLoading = false;
+    setLoading(isLoading);
   }, [app])
 
   return {
+    isLoading,
     app,
     appCheck,
     auth,

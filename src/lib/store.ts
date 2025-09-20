@@ -6,6 +6,11 @@ import { Firestore } from 'firebase/firestore';
 import { FirebaseStorage } from 'firebase/storage';
 import { atom } from 'nanostores'
 
+const $loading = atom<boolean>(true)
+const setLoading = (loading: boolean) => {
+  $loading.set(loading);
+}
+
 const $app = atom<FirebaseApp | undefined>()
 
 const setApp = (app: FirebaseApp) => {
@@ -42,4 +47,6 @@ const setAnalytics = (analytics: Analytics) => {
   $analytics.set(analytics);
 }
 
-export { $app, setApp, $appCheck, setAppCheck, $auth, setAuth, $firestore, setFirestore, $storage, setStorage, $analytics, setAnalytics }
+export {
+  $app, setApp, $appCheck, setAppCheck, $auth, setAuth, $firestore, setFirestore, $storage, setStorage, $analytics, setAnalytics, $loading, setLoading
+}

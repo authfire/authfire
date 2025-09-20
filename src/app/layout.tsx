@@ -7,6 +7,7 @@ import { Toaster } from "@/components/toaster";
 import Logo from "@/components/logo";
 import { appName, legalBusinessName, privacyPolicyUrl, termsOfServiceUrl } from "@/lib/const";
 import Link from "next/link";
+import { LoadingView } from "@/components/loading-view";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,7 +53,8 @@ export default function RootLayout({
                   <Logo />
                 </div>
                 <div className="flex flex-auto items-center justify-center">
-                  <div className="w-full max-w-xs">
+                  <div className="w-full max-w-xs relative">
+                    <LoadingView />
                     {children}
                   </div>
                 </div>
