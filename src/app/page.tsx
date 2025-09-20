@@ -7,8 +7,8 @@ import { useFirebase } from "@/lib/firebase";
 import { signOut, useCurrentUser } from "@authfire/core";
 
 export default function Home() {
-  const { isLoading, auth } = useFirebase();
-  const { user } = useCurrentUser();
+  const { auth } = useFirebase();
+  const { isLoading, user } = useCurrentUser();
 
   const handleSignOut = async () => {
     if (!auth) return;

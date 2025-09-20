@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@authfire/core':
-        specifier: ^1.0.2
-        version: 1.0.2(firebase@12.2.1)
+        specifier: ^1.0.3
+        version: 1.0.3(firebase@12.2.1)
       '@nanostores/react':
         specifier: ^1.0.0
         version: 1.0.0(nanostores@1.0.1)(react@19.1.1)
@@ -97,8 +97,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@authfire/core@1.0.2':
-    resolution: {integrity: sha512-OG62uAkQ0tvI/wPxdu9wjuHIX958QVzdt5oXik2n8D8m8YeWNDjx1JJzgJ/LIGXQpHiaZ6v8vgDjrrIEi90lJQ==}
+  '@authfire/core@1.0.3':
+    resolution: {integrity: sha512-OryAo7BsEDhq+NI+vHXTb44IwB8fFhG2Jxqc6aPgtINyU8NX+AY810NZUFB5WMNbFbhyczsHJfIIVOi0nc/unA==}
     peerDependencies:
       firebase: ^12.2.1
 
@@ -2405,7 +2405,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@authfire/core@1.0.2(firebase@12.2.1)':
+  '@authfire/core@1.0.3(firebase@12.2.1)':
     dependencies:
       firebase: 12.2.1
 
