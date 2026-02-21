@@ -13,6 +13,7 @@ import GoogleSignInButton from "./google-signin-button"
 import OpenIDConnectButton from "./openid-connect-button"
 import { signIn } from "@authfire/core"
 import { useFirebase } from "@/lib/firebase"
+import { getFriendlyErrorMessage } from "@/lib/error-handling"
 
 export function LoginForm({
   className,
@@ -48,9 +49,7 @@ export function LoginForm({
           setMessage('Login link sent to your email address. Please check your inbox.');
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert(errorCode + ' ' + errorMessage);
+          alert(getFriendlyErrorMessage(error));
         })
         .finally(() => {
           setIsDisabled(false);
@@ -80,15 +79,9 @@ export function LoginForm({
           window.location.href = baseUrl;
         })
         .catch((error) => {
-          if (error.code === 'auth/invalid-credential') {
-            toast.error('Invalid credentials. Please check your email and password.', {
-              duration: Infinity,
-            });
-          } else {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            toast.error(errorCode + ' ' + errorMessage);
-          }
+          toast.error(getFriendlyErrorMessage(error), {
+            duration: Infinity,
+          });
         })
         .finally(() => {
           setIsDisabled(false);

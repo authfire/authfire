@@ -11,6 +11,7 @@ import { toast } from "sonner"
 import GoogleSignInButton from "./google-signin-button"
 import OpenIDConnectButton from "./openid-connect-button"
 import { useFirebase } from "@/lib/firebase"
+import { getFriendlyErrorMessage } from "@/lib/error-handling"
 
 export function SignupForm({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   const { auth } = useFirebase();
@@ -35,17 +36,13 @@ export function SignupForm({ className, ...props }: React.HTMLAttributes<HTMLDiv
         // Send email verification
         sendEmailVerification(user)
           .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            toast.error(errorCode + ' ' + errorMessage, {
+            toast.error(getFriendlyErrorMessage(error), {
               duration: Infinity,
             });
           })
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        toast.error(errorCode + ' ' + errorMessage, {
+        toast.error(getFriendlyErrorMessage(error), {
           duration: Infinity,
         });
       })
