@@ -7,6 +7,7 @@ import { baseUrl, openIdConfig } from "@/lib/const";
 import { signIn } from '@authfire/core';
 import { OAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useFirebase } from '@/lib/firebase';
+import { getFriendlyErrorMessage } from '@/lib/error-handling';
 
 export default function OpenIDConnectButton() {
   const { auth } = useFirebase();
@@ -32,9 +33,7 @@ export default function OpenIDConnectButton() {
         setIsDisabled(false);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        toast.error(`Error signing in with OpenID: ${errorCode} - ${errorMessage}`);
+        toast.error(getFriendlyErrorMessage(error));
       });
   }
 
